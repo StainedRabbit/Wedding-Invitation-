@@ -3,6 +3,8 @@ import type { FormEvent } from 'react'
 
 type Context = { kind: 'general' | 'personalized'; state: 'ready' | 'received' | 'closed'; csrfToken: string; guestName?: string; personalMessage?: string; allowsPlusOne?: boolean }
 
+const SHOW_MEDIA_UPLOAD = false
+
 function newKey() {
   const bytes = crypto.getRandomValues(new Uint8Array(16))
   bytes[6] = (bytes[6] & 15) | 64
@@ -142,6 +144,7 @@ export function Rsvp({ onBack }: { onBack: () => void }) {
         </fieldset>}
         <label className="field-label" htmlFor="guest-message">Message for the couple (optional)</label>
         <textarea className="guest-input" id="guest-message" value={message} onChange={event => setMessage(event.target.value)} />
+        {SHOW_MEDIA_UPLOAD && <>
         <label className="field-label" htmlFor="guest-files">Photos and videos (optional)</label>
         <p>Share up to 15 photos (25 MB each) and 3 videos (250 MB each). Photos: JPEG, PNG or HEIC. Videos: MP4 or MOV. Only the couple can see them.</p>
         <input id="guest-files" type="file" multiple accept=".jpg,.jpeg,.png,.heic,.mp4,.mov" onChange={event => {
@@ -154,8 +157,9 @@ export function Rsvp({ onBack }: { onBack: () => void }) {
           event.target.value = ''
         }} />
         {files.length > 0 && <ul>{files.map((file, index) => <li key={index}>{file.name} <button type="button" onClick={() => setFiles(current => current.filter((_, i) => i !== index))}>Remove</button></li>)}</ul>}
+        </>}
         {error && <p className="error" role="alert">{error}</p>}
-        {busy && <p role="status">{uploadProgress === null ? 'Preparing your response…' : uploadProgress < 100 ? `Uploading… ${uploadProgress}%` : 'Saving your response…'}</p>}
+        {busy && <p role="status">{files.length > 0 && uploadProgress !== null && uploadProgress < 100 ? `Uploading… ${uploadProgress}%` : 'Saving your response…'}</p>}
         <button className="primary" type="submit" disabled={busy}>{busy ? 'Saving…' : 'Send response'}</button>
       </form>}
     {!context && error && <p className="error" role="alert">{error}</p>}

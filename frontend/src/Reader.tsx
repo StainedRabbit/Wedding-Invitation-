@@ -4,7 +4,7 @@ import { EdgeLight } from './EdgeLight'
 import { animatePaperTurn } from './paperTurn'
 import { Rsvp } from './Rsvp'
 
-const chapters = ['invitation', 'story', 'details', 'rsvp'] as const
+const chapters = ['invitation', 'story', 'details', 'family', 'guests', 'rsvp'] as const
 type Chapter = typeof chapters[number]
 type Direction = -1 | 1
 type Turn = { to: Chapter; direction: Direction; scrollTop: number }
@@ -186,7 +186,9 @@ export function Reader({ reducedMotion, entering, onClose }: {
               <div className="leaf-content">
                 {chapter === 'invitation' && <Invitation onJump={goTo} />}
                 {chapter === 'story' && <Story />}
-                {chapter === 'details' && <WeddingDetails />}
+                {chapter === 'details' && <WeddingDetails onJump={goTo} />}
+                {chapter === 'family' && <Family />}
+                {chapter === 'guests' && <GuestInformation />}
                 {chapter === 'rsvp' && <Rsvp onBack={() => goTo('invitation')} />}
               </div>
             </div>
@@ -248,14 +250,51 @@ function Story() {
   </>
 }
 
-function WeddingDetails() {
+function WeddingDetails({ onJump }: { onJump: (chapter: Chapter) => void }) {
   return <>
     <h2 id="details-title" tabIndex={-1}>Wedding Details</h2>
-    <p className="sample-label">Sample wedding details</p>
+    <p className="sample-label">SAMPLE details - please replace before sharing</p>
     <dl className="event-details">
-      <div><dt><img src="/art/icon-calendar.svg" alt="" /> Date</dt><dd>Saturday, 12 June 2027</dd></div>
-      <div><dt><img src="/art/icon-location.svg" alt="" /> Venue</dt><dd>Moonlight Garden, Tagaytay</dd></div>
-      <div><dt>Schedule</dt><dd>4:00 PM ceremony<br />6:00 PM reception</dd></div>
+      <div><dt><img src="/art/icon-calendar.svg" alt="" /> Date</dt><dd>Saturday, 12 June 2027 (SAMPLE)</dd></div>
+      <div><dt><img src="/art/icon-location.svg" alt="" /> Ceremony &amp; reception</dt><dd>Moonlight Garden (SAMPLE fictional venue)<br />123 Sample Lane, Tagaytay, Philippines (SAMPLE fictional address)<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=Moonlight+Garden+Sample+Tagaytay" target="_blank" rel="noreferrer">Sample map search</a> - replace with the real venue link</dd></div>
+      <div><dt>Schedule (SAMPLE)</dt><dd>3:30 PM guest arrival<br />4:00 PM ceremony<br />6:00 PM reception at the same venue</dd></div>
+    </dl>
+    <nav className="chapter-links" aria-label="More wedding information">
+      <button className="back" type="button" onClick={() => onJump('family')}>Our Families &amp; Wedding Party</button>
+      <button className="back" type="button" onClick={() => onJump('guests')}>Guest Information</button>
+    </nav>
+  </>
+}
+
+function Family() {
+  return <>
+    <h2 id="family-title" tabIndex={-1}>Our Families &amp; Wedding Party</h2>
+    <p className="sample-label">SAMPLE names and roles - please replace before sharing</p>
+    <p>With the love and blessing of our families, we are delighted to celebrate with you.</p>
+    <dl className="event-details">
+      <div><dt>Bride's parents</dt><dd>Mr. and Mrs. Sample Sayno</dd></div>
+      <div><dt>Groom's parents</dt><dd>Mr. and Mrs. Sample Tanierla</dd></div>
+      <div><dt>Principal sponsors</dt><dd>Ninong Sample One &amp; Ninang Sample One<br />Ninong Sample Two &amp; Ninang Sample Two</dd></div>
+      <div><dt>Maid of honor &amp; best man</dt><dd>Sample Maid of Honor<br />Sample Best Man</dd></div>
+      <div><dt>Bridesmaids &amp; groomsmen</dt><dd>Sample Bridesmaid One &amp; Sample Bridesmaid Two<br />Sample Groomsman One &amp; Sample Groomsman Two</dd></div>
+      <div><dt>Secondary sponsors</dt><dd>Candle: Sample Candle Sponsors<br />Veil: Sample Veil Sponsors<br />Cord: Sample Cord Sponsors</dd></div>
+      <div><dt>Little attendants</dt><dd>Flower girl: Sample Flower Girl<br />Ring bearer: Sample Ring Bearer<br />Bible bearer: Sample Bible Bearer</dd></div>
+    </dl>
+  </>
+}
+
+function GuestInformation() {
+  return <>
+    <h2 id="guests-title" tabIndex={-1}>For Our Guests</h2>
+    <p className="sample-label">SAMPLE guidance - please replace before sharing</p>
+    <dl className="event-details">
+      <div><dt>RSVP</dt><dd>Please use the RSVP page by 12 May 2027 (SAMPLE deadline). Questions or changes: <a href="mailto:rsvp@example.com">rsvp@example.com</a> (SAMPLE contact).</dd></div>
+      <div><dt>Plus-ones</dt><dd>Personalized invitations will show a plus-one question when one is included. General invitations are for one guest per response.</dd></div>
+      <div><dt>Attire (SAMPLE)</dt><dd>Garden formal in soft blues, ivory, or warm neutrals. Please choose comfortable shoes for the garden.</dd></div>
+      <div><dt>Arrival &amp; transport (SAMPLE)</dt><dd>Please arrive by 3:30 PM. Sample on-site parking is available; arrange your own transport to the fictional venue.</dd></div>
+      <div><dt>Children (SAMPLE)</dt><dd>We hope you can enjoy an adults-only celebration. Please contact us if you have questions.</dd></div>
+      <div><dt>Gifts (SAMPLE)</dt><dd>Your presence is our greatest gift; no gifts are required.</dd></div>
+      <div><dt>A note of thanks</dt><dd>Thank you for being part of our story. We look forward to celebrating our next chapter with you.</dd></div>
     </dl>
   </>
 }

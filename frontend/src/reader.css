@@ -130,6 +130,7 @@ body:has(.stage:is(.opening, .approaching, .open, .retreating, .closing)) { over
 .event-details div { padding: .6rem .1rem; }
 .event-details div + div { border-top: 1px solid #94692f45; }
 .event-details dt { font-size: 1.1rem; font-style: italic; }
+.event-details a { color: #173456; text-underline-offset: .2em; }
 .event-details img { width: .95em; vertical-align: -.08em; }
 .reply { width: min(100%, 25rem); margin-inline: auto; }
 .reply h2 { font-size: clamp(2rem, 6vw, 3.5rem); }

@@ -17,3 +17,4 @@ tools/ffmpeg/
 .spec-kit-cache/
 .spec-kit-tools/
 .railway-migration/
+.github-upload-staging/

@@ -100,11 +100,7 @@
   from { transform: translate(0, 0) scale(1); }
   to { transform: var(--camera-target, none); }
 }
-.approaching .book-glow,
-.approaching .book-opener span, .approaching .skip-opening { visibility: hidden; }
-.open .cover-rig, .retreating .book-glow,
-.retreating .book-opener span, .retreating .skip-opening,
-.closing .book-opener span, .closing .skip-opening { visibility: hidden; }
+.approaching .book-glow, .open .cover-rig, .retreating .book-glow { visibility: hidden; }
 .approaching .board, .retreating .board { rotate: y -180deg; }
 .approaching .front, .retreating .front { clip-path: inset(0 0 0 13.35175%); }
 .approaching .spine, .retreating .spine { opacity: 0; }
@@ -126,7 +122,6 @@
 .closing .book-glow { animation: return-glow 1.3s ease-in both; }
 @keyframes return-glow { 0%, 65% { opacity: 0; } 100% { opacity: var(--cover-glow-opacity, .72); } }
 .opening .book-glow { animation: blend-binding .7s .7s both; }
-.opening .book-opener span, .opening .skip-opening { animation: blend-binding .28s .12s both; }
 @media (prefers-reduced-motion: no-preference) {
   .closed .ribbon-right-tail { animation: tied-ribbon-breeze 4.2s ease-in-out infinite; }
   .closed .ribbon-left-tail { animation: tied-ribbon-breeze 5.3s -1.2s ease-in-out infinite reverse; }

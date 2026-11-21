@@ -56,6 +56,6 @@ The Railway package excludes local database files, credentials, and uploads. It 
 - `frontend/public/art` contains the optimized artwork used by the app. The original pack and its review material are in `Assets`.
 - `review` contains phone-size screenshots from the running frontend.
 
-Clicking the book cover plays the opening animation. With reduced motion enabled, choose **Open with animation** to play the opening and page turns for this reading session, or **Open without animation** to open and change pages immediately. A failed motion image or a wait longer than 1.6 seconds after activation also opens the page directly. The animation uses the supplied flat ribbon cutouts and reconstructed inner board.
+Clicking the book cover plays the opening animation. The book itself is the opening button; activating it plays the opening and page turns for the reading session. A failed motion image or a wait longer than 1.6 seconds after activation also opens the page directly. The animation uses the supplied flat ribbon cutouts and reconstructed inner board.
 
 The invitation fills the screen when the book opens. Scroll, swipe vertically, click a page edge, or press the left and right arrow keys to turn pages. Going back from the invitation closes the book. The invitation’s chapter buttons jump directly to Our Story, Wedding Details, or RSVP.

@@ -23,7 +23,6 @@ function App() {
   const approaching = phase === 'approaching'
   const closing = phase === 'retreating' || phase === 'closing'
   const animating = phase === 'opening' || approaching || closing
-  const offerSkip = reduceMotion
   const reduceSessionMotion = reduceMotion && !motionOptIn
 
   useEffect(() => {
@@ -172,12 +171,8 @@ function App() {
           </div>
           <Cover load={load} onLoad={setLoad} />
           {!open && <button type="button" className="book-opener" ref={opener}
-            aria-disabled={phase !== 'closed'} onClick={() => enter(true)}>
-            <span>{offerSkip ? 'Open with animation' : 'Open the book'}</span>
-          </button>}
+            aria-label="Open the book" aria-disabled={phase !== 'closed'} onClick={() => enter(true)} />}
         </div>
-        {!open && offerSkip && <button type="button" className="skip-opening"
-          aria-disabled={phase !== 'closed'} onClick={() => enter(false)}>Open without animation</button>}
         <span className="sr-only" role="status">{closing ? 'Closing invitation' : phase === 'waiting' || animating ? 'Opening invitation' : ''}</span>
       </div>
     </div>

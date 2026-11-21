@@ -49,7 +49,7 @@ The Railway package excludes local database files, credentials, and uploads. It 
 
 ## Implementation
 
-- `frontend/src/Book.tsx` assembles the cover and decodes mounted images before replacing the initial composite.
+- `frontend/src/Book.tsx` assembles the cover and decodes mounted images before replacing the initial cover backdrop.
 - `frontend/src/portrait.json` records the production layers’ trimmed geometry from `Assets/asset-manifest.csv`. `art.tsx` registers them on one portrait canvas.
 - `frontend/src/motion.css` controls the ribbon release and cover turn. `reader.css` lays out the pages and animates the invitation unfolding and zooming into view.
 - `frontend/src/main.tsx` manages the cover and opening fallback. `Reader.tsx` contains the invitation chapters, sample content, and navigation. `Rsvp.tsx` contains the inline preview form.

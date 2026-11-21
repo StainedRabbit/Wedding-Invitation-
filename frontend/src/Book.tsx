@@ -44,7 +44,7 @@ export function Cover({ load, onLoad }: { load: LoadState; onLoad: (state: LoadS
           <Layer name="cover-exterior" />
           {ornaments.map(name => <Layer key={name} name={name} />)}
         </>}
-        {!layersReady && <img className="composite" src={art('cover-first-paint')} alt="" fetchPriority="high" />}
+        {!layersReady && <img className="composite" src={art('cover-exterior')} alt="" fetchPriority="high" />}
         <h1 className="cover-title">Our Next<br />Chapter</h1>
         <div className="cover-name bride">Angelyn B.<br />Sayno</div>
         <div className="cover-name groom">Kevin-Ezer F.<br />Tanierla</div>

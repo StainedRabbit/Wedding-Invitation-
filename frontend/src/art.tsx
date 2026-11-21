@@ -7,7 +7,7 @@ export const ribbonLayers: LayerName[] = [
   'ribbon-left-loop', 'ribbon-right-loop', 'ribbon-knot',
 ]
 export const ornaments: LayerName[] = ['cover-crown-star', 'cover-flourish', 'moon-stars', 'sun']
-export const art = (name: string) => '/art/' + name + '.webp'
+export const art = (name: string) => '/art/' + (name === 'sun' ? 'sun-refined' : name) + '.webp'
 
 export function Layer({ name }: { name: LayerName }) {
   const { x, y, w, h, canvasW, canvasH } = portrait[name]

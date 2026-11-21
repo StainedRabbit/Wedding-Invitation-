@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<form method="get">
+  <label>Invitation type
+    <select name="type"><option value="">All</option><option value="general" {% if selected_type == 'general' %}selected{% endif %}>General</option><option value="personalized" {% if selected_type == 'personalized' %}selected{% endif %}>Personalized</option></select>
+  </label>
+  <label>Status
+    <select name="status"><option value="">All</option><option value="accepted" {% if selected_status == 'accepted' %}selected{% endif %}>Accepted</option><option value="declined" {% if selected_status == 'declined' %}selected{% endif %}>Declined</option><option value="awaiting_reply" {% if selected_status == 'awaiting_reply' %}selected{% endif %}>Awaiting reply</option></select>
+  </label>
+  <button type="submit">Filter</button>
+</form>
+<p>Accepted: {{ totals.accepted }} · Declined: {{ totals.declined }} · Awaiting reply: {{ totals.awaiting_reply }} · Expected attendance: {{ totals.attendance }}</p>
+<table><thead><tr><th>Guest</th><th>Invitation</th><th>Status</th><th>Plus-one</th></tr></thead>
+<tbody>{% for name, kind, status, plus_one, response in rows %}
+<tr><td>{% if response %}<a href="{% url 'admin:rsvp_rsvpresponse_change' response.pk %}">{{ name }}</a>{% else %}{{ name }}{% endif %}</td><td>{{ kind|capfirst }}</td><td>{{ status }}</td><td>{{ plus_one }}</td></tr>
+{% empty %}<tr><td colspan="4">No matching invitations or responses.</td></tr>{% endfor %}</tbody></table>
+{% if page.has_other_pages %}
+<p>
+  {% if page.has_previous %}<a href="?type={{ selected_type|urlencode }}&amp;status={{ selected_status|urlencode }}&amp;page={{ page.previous_page_number }}">Previous</a>{% endif %}
+  Page {{ page.number }} of {{ page.paginator.num_pages }}
+  {% if page.has_next %}<a href="?type={{ selected_type|urlencode }}&amp;status={{ selected_status|urlencode }}&amp;page={{ page.next_page_number }}">Next</a>{% endif %}
+</p>
+{% endif %}
+{% endblock %}

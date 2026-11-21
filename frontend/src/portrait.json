@@ -1,0 +1,138 @@
+{
+  "book-back-board": {
+    "x": 42,
+    "y": 39,
+    "w": 1000,
+    "h": 1348,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "cover-crown-star": {
+    "x": 549,
+    "y": 64,
+    "w": 58,
+    "h": 93,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "cover-exterior": {
+    "x": 0,
+    "y": 0,
+    "w": 1086,
+    "h": 1448,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "cover-flourish": {
+    "x": 191,
+    "y": 456,
+    "w": 693,
+    "h": 168,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "cover-inner-face": {
+    "x": 0,
+    "y": 0,
+    "w": 1086,
+    "h": 1448,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "moon-stars": {
+    "x": 264,
+    "y": 606,
+    "w": 248,
+    "h": 169,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "page-edge-stack": {
+    "x": 144,
+    "y": 51,
+    "w": 892,
+    "h": 1324,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "page-invitation-mobile": {
+    "x": 0,
+    "y": 0,
+    "w": 1086,
+    "h": 1448,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-band": {
+    "x": 31,
+    "y": 951,
+    "w": 607,
+    "h": 97,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-knot": {
+    "x": 791,
+    "y": 950,
+    "w": 86,
+    "h": 85,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-left-loop": {
+    "x": 614,
+    "y": 917,
+    "w": 210,
+    "h": 145,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-left-tail": {
+    "x": 631,
+    "y": 989,
+    "w": 197,
+    "h": 346,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-resting": {
+    "x": 3,
+    "y": 800,
+    "w": 815,
+    "h": 651,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-right-loop": {
+    "x": 856,
+    "y": 918,
+    "w": 200,
+    "h": 145,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-right-tail": {
+    "x": 851,
+    "y": 998,
+    "w": 162,
+    "h": 328,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "ribbon-upper-wrap": {
+    "x": 852,
+    "y": 743,
+    "w": 203,
+    "h": 253,
+    "canvasW": 1086,
+    "canvasH": 1448
+  },
+  "sun": {
+    "x": 597,
+    "y": 585,
+    "w": 322,
+    "h": 196,
+    "canvasW": 1086,
+    "canvasH": 1448
+  }
+}

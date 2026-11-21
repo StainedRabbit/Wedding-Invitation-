@@ -1,0 +1,93 @@
+filename,purpose,width_px,height_px,format,bytes,transparency,x_offset_px,y_offset_px,canvas_width,canvas_height,coordinate_system
+masters/book-back-board.png,Stationary rear board under page stack.,1000,1348,png,8703,yes,42,39,1086,1448,portrait master
+masters/cover-crown-star.png,Top-center cover star,58,93,png,15333,yes,549,64,1086,1448,portrait master
+masters/cover-exterior.png,Text-free cloth board; moving face. All motifs and ribbon removable.,1086,1448,png,3400519,yes,0,0,1086,1448,portrait master
+masters/cover-first-paint.png,Lightweight text-free first paint; overlay live title and names.,648,864,png,1235154,yes,0,0,648,864,local
+masters/cover-flourish.png,Gold stitched flourish below the title,693,168,png,302892,yes,191,456,1086,1448,portrait master
+masters/cover-inner-face.png,"Inside moving board. Mirror attachment geometry at hinge, keep moon upright.",1086,1448,png,728118,yes,0,0,1086,1448,portrait master
+masters/desktop-spread.png,"Text-free two-page desktop fallback, fixed aspect ratio.",1760,1330,png,2868629,yes,0,0,1760,1330,local
+masters/floral-bottom-left.png,Paper botanical ornament for fixed-size margin placement.,291,315,png,194553,yes,0,0,291,315,local
+masters/floral-bottom-right.png,Paper botanical ornament for fixed-size margin placement.,273,315,png,185399,yes,0,0,273,315,local
+masters/floral-bottom.png,Paper botanical ornament for fixed-size margin placement.,771,324,png,510177,yes,0,0,771,324,local
+masters/floral-top-left.png,Paper botanical ornament for fixed-size margin placement.,318,258,png,176849,yes,0,0,318,258,local
+masters/floral-top-right.png,Paper botanical ornament for fixed-size margin placement.,240,258,png,133660,yes,0,0,240,258,local
+masters/floral-top.png,Paper botanical ornament for fixed-size margin placement.,771,258,png,418398,yes,0,0,771,258,local
+masters/leaf-back.png,Blank turning leaf with gutter on right,858,1284,png,609664,opaque,0,0,858,1284,local
+masters/leaf-front.png,Blank turning leaf with gutter on left,858,1284,png,609342,opaque,0,0,858,1284,local
+masters/moon-stars.png,Silver crescent and embroidered stars above Angelyn,248,169,png,114505,yes,264,606,1086,1448,portrait master
+masters/moonlit-backdrop.png,Midnight halo behind the book; crop to fill.,720,720,png,61151,opaque,0,0,720,720,local
+masters/page-edge-stack.png,Stationary ivory fore-edge under turning face.,892,1324,png,7950,yes,144,51,1086,1448,portrait master
+masters/page-invitation-mobile.png,Text-free open portrait book including inside binding; add resting ribbon.,1086,1448,png,3017859,yes,0,0,1086,1448,portrait master
+masters/paper-ivory.png,Seamless ivory paper tile for expanding content.,246,246,png,74663,opaque,0,0,246,246,local
+masters/reference-closed.png,Approved reference only; use text-free exports in production,1086,1448,png,3319801,opaque,0,0,1086,1448,local
+masters/reference-open.png,Approved reference only; use text-free exports in production,1086,1448,png,3151108,opaque,0,0,1086,1448,local
+masters/ribbon-band.png,Independent tied-ribbon component: band,607,97,png,154322,yes,31,951,1086,1448,portrait master
+masters/ribbon-knot.png,Independent tied-ribbon component: knot,86,85,png,20204,yes,791,950,1086,1448,portrait master
+masters/ribbon-left-loop.png,Independent tied-ribbon component: left loop,210,145,png,82220,yes,614,917,1086,1448,portrait master
+masters/ribbon-left-tail.png,Independent tied-ribbon component: left tail,197,346,png,186623,yes,631,989,1086,1448,portrait master
+masters/ribbon-resting.png,Loose periwinkle ribbon on the open book.,815,651,png,1215317,yes,3,800,1086,1448,portrait master
+masters/ribbon-right-loop.png,Independent tied-ribbon component: right loop,200,145,png,77919,yes,856,918,1086,1448,portrait master
+masters/ribbon-right-tail.png,Independent tied-ribbon component: right tail,162,328,png,148323,yes,851,998,1086,1448,portrait master
+masters/ribbon-tied.png,Composite of all seven ribbon pieces; use either this or component stack.,1025,592,png,396378,yes,31,743,1086,1448,portrait master
+masters/ribbon-upper-wrap.png,Independent tied-ribbon component: upper wrap,203,253,png,138179,yes,852,743,1086,1448,portrait master
+masters/sun.png,Golden sun above Kevin-Ezer,322,196,png,172421,yes,597,585,1086,1448,portrait master
+previews/01-tied-cover.jpg,Assembled closed review and first opening state,1086,1448,jpg,745382,opaque,0,0,1086,1448,local
+previews/02-ribbon-released.jpg,Released ribbon with front board still closed,1086,1448,jpg,740500,opaque,0,0,1086,1448,local
+previews/03-open-invitation.jpg,Assembled open resting state; accurate typeset review,1086,1448,jpg,627736,opaque,0,0,1086,1448,local
+previews/controls-and-feedback.jpg,"Button variants, native-size icons, RSVP error/retry and confirmation",1120,1210,jpg,137642,opaque,0,0,1120,1210,local
+previews/desktop-facing-spread.jpg,Desktop two-leaf composition: story and invitation,1600,1000,jpg,340771,opaque,0,0,1600,1000,local
+previews/guest-journey-contact-sheet.jpg,Six labeled 360px-wide portrait chapter compositions,1184,1150,jpg,415499,opaque,0,0,1184,1150,local
+previews/opening-sequence.jpg,Ribbon clearance and stationary open frame,1180,588,jpg,285217,opaque,0,0,1180,588,local
+web/book-back-board.webp,Stationary rear board under page stack.,1000,1348,webp,3576,yes,42,39,1086,1448,portrait master
+web/button-flourish.svg,Fixed-size button end ornament. Pair with flexible CSS border.,24,24,svg,201,transparent vector,0,0,24,24,local
+web/chapter-divider.svg,Chapter divider,240,24,svg,303,transparent vector,0,0,240,24,local
+web/chapter-tab.svg,Ribbon chapter tab; live label area,180,42,svg,228,transparent vector,0,0,180,42,local
+web/confirmation-stamp.svg,"Open-book seal, moon left, sun right",64,64,svg,465,transparent vector,0,0,64,64,local
+web/cover-crown-star.webp,Top-center cover star,58,93,webp,3362,yes,549,64,1086,1448,portrait master
+web/cover-exterior.webp,Text-free cloth board; moving face. All motifs and ribbon removable.,1086,1448,webp,460186,yes,0,0,1086,1448,portrait master
+web/cover-first-paint.webp,Lightweight text-free first paint; overlay live title and names.,648,864,webp,250062,yes,0,0,648,864,local
+web/cover-flourish.webp,Gold stitched flourish below the title,693,168,webp,16758,yes,191,456,1086,1448,portrait master
+web/cover-inner-face.webp,"Inside moving board. Mirror attachment geometry at hinge, keep moon upright.",1086,1448,webp,78384,yes,0,0,1086,1448,portrait master
+web/desktop-spread.webp,"Text-free two-page desktop fallback, fixed aspect ratio.",1760,1330,webp,258322,yes,0,0,1760,1330,local
+web/favicon-16.png,Raster favicon,16,16,png,417,yes,0,0,16,16,local
+web/favicon-32.png,Raster favicon,32,32,png,739,yes,0,0,32,32,local
+web/favicon.svg,Book favicon,32,32,svg,311,transparent vector,0,0,32,32,local
+web/floral-bottom-left.webp,Paper botanical ornament for fixed-size margin placement.,291,315,webp,24566,yes,0,0,291,315,local
+web/floral-bottom-right.webp,Paper botanical ornament for fixed-size margin placement.,273,315,webp,26084,yes,0,0,273,315,local
+web/floral-bottom.webp,Paper botanical ornament for fixed-size margin placement.,771,324,webp,57246,yes,0,0,771,324,local
+web/floral-top-left.webp,Paper botanical ornament for fixed-size margin placement.,318,258,webp,22334,yes,0,0,318,258,local
+web/floral-top-right.webp,Paper botanical ornament for fixed-size margin placement.,240,258,webp,17950,yes,0,0,240,258,local
+web/floral-top.webp,Paper botanical ornament for fixed-size margin placement.,771,258,webp,51488,yes,0,0,771,258,local
+web/icon-calendar.svg,Action icon: calendar,24,24,svg,238,transparent vector,0,0,24,24,local
+web/icon-chapters.svg,Action icon: chapters,24,24,svg,251,transparent vector,0,0,24,24,local
+web/icon-check.svg,Action icon: check,24,24,svg,216,transparent vector,0,0,24,24,local
+web/icon-clock.svg,Action icon: clock,24,24,svg,250,transparent vector,0,0,24,24,local
+web/icon-close.svg,Action icon: close,24,24,svg,222,transparent vector,0,0,24,24,local
+web/icon-error.svg,Action icon: error,24,24,svg,233,transparent vector,0,0,24,24,local
+web/icon-location.svg,Action icon: location,24,24,svg,281,transparent vector,0,0,24,24,local
+web/icon-next.svg,Action icon: next,24,24,svg,214,transparent vector,0,0,24,24,local
+web/icon-previous.svg,Action icon: previous,24,24,svg,215,transparent vector,0,0,24,24,local
+web/icon-retry.svg,Action icon: retry,24,24,svg,229,transparent vector,0,0,24,24,local
+web/icon-rsvp.svg,Action icon: rsvp,24,24,svg,227,transparent vector,0,0,24,24,local
+web/leaf-back.webp,Blank turning leaf with gutter on right,858,1284,webp,52936,opaque,0,0,858,1284,local
+web/leaf-front.webp,Blank turning leaf with gutter on left,858,1284,webp,52878,opaque,0,0,858,1284,local
+web/milestone-star.svg,Story marker and optional brief glint,24,24,svg,178,transparent vector,0,0,24,24,local
+web/moon-stars.webp,Silver crescent and embroidered stars above Angelyn,248,169,webp,12426,yes,264,606,1086,1448,portrait master
+web/moonlit-backdrop.webp,Midnight halo behind the book; crop to fill.,720,720,webp,2988,opaque,0,0,720,720,local
+web/page-edge-stack.webp,Stationary ivory fore-edge under turning face.,892,1324,webp,2954,yes,144,51,1086,1448,portrait master
+web/page-invitation-mobile.webp,Text-free open portrait book including inside binding; add resting ribbon.,1086,1448,webp,280126,yes,0,0,1086,1448,portrait master
+web/paper-ivory.webp,Seamless ivory paper tile for expanding content.,246,246,webp,3232,opaque,0,0,246,246,local
+web/ribbon-band.webp,Independent tied-ribbon component: band,607,97,webp,29388,yes,31,951,1086,1448,portrait master
+web/ribbon-knot.webp,Independent tied-ribbon component: knot,86,85,webp,4094,yes,791,950,1086,1448,portrait master
+web/ribbon-left-loop.webp,Independent tied-ribbon component: left loop,210,145,webp,13390,yes,614,917,1086,1448,portrait master
+web/ribbon-left-tail.webp,Independent tied-ribbon component: left tail,197,346,webp,20598,yes,631,989,1086,1448,portrait master
+web/ribbon-resting.webp,Loose periwinkle ribbon on the open book.,815,651,webp,58016,yes,3,800,1086,1448,portrait master
+web/ribbon-right-loop.webp,Independent tied-ribbon component: right loop,200,145,webp,12168,yes,856,918,1086,1448,portrait master
+web/ribbon-right-tail.webp,Independent tied-ribbon component: right tail,162,328,webp,15076,yes,851,998,1086,1448,portrait master
+web/ribbon-tied.webp,Composite of all seven ribbon pieces; use either this or component stack.,1025,592,webp,93686,yes,31,743,1086,1448,portrait master
+web/ribbon-upper-wrap.webp,Independent tied-ribbon component: upper wrap,203,253,webp,11882,yes,852,743,1086,1448,portrait master
+web/share-preview.jpg,"Public link preview, title only",1200,630,jpg,125197,opaque,0,0,1200,630,local
+web/sun.webp,Golden sun above Kevin-Ezer,322,196,webp,19712,yes,597,585,1086,1448,portrait master
+previews/transparency-check.jpg,Layer check on light and dark grounds,900,600,jpg,78942,opaque,0,0,900,600,local
+previews/cover-flourish-check.png,Full flourish on ivory and midnight,717,384,png,52773,opaque,0,0,717,384,local
+previews/ribbon-layer-check.jpg,Individual re-traced ribbon pieces on two backgrounds,900,840,jpg,122111,opaque,0,0,900,840,local

@@ -1,0 +1,159 @@
+/* All pieces stay in the portrait coordinate system. The loops first pull
+   flat at the gather; only the unthreaded length then travels off the board. */
+.opening .ribbon-right-tail { animation: pull-tail .67s ease-in-out both; }
+.opening .ribbon-right-loop { animation: slip-loop .42s .06s ease-in-out both; }
+.opening .ribbon-left-loop { animation: slip-loop .34s .23s ease-in-out both; }
+.opening .ribbon-left-tail { animation: feed-tail .38s .19s ease-in-out both; }
+.opening .ribbon-knot { animation: release-knot .24s .39s ease-in-out both; }
+.opening .ribbon-upper-wrap { animation: unwind-wrap .33s .28s ease-in-out both; }
+.opening .ribbon-band { animation: feed-band .34s .23s ease-in-out both; }
+.opening .satin { animation: withdraw .36s .56s cubic-bezier(.48,.02,.84,.74) both; }
+@keyframes pull-tail {
+  45% { transform: rotate(-24deg) scale(.94,1.08); }
+  to { transform: rotate(-75deg) skewX(-5deg) scale(.5,1.12); }
+}
+@keyframes slip-loop {
+  50% { transform: rotate(-3deg) scale(.76,.67); }
+  95% { opacity: 1; }
+  to { transform: scale(.025,.12); opacity: 0; }
+}
+@keyframes feed-tail {
+  45% { transform: rotate(10deg) scale(.91,.94); }
+  92% { opacity: 1; }
+  to { transform: rotate(25deg) scale(.17,.035); opacity: 0; }
+}
+@keyframes release-knot {
+  45% { transform: rotate(-13deg) scale(1.14,.81); }
+  to { transform: rotate(-22deg) scale(.75,.45); opacity: 0; }
+}
+@keyframes unwind-wrap {
+  45% { transform: rotate(7deg) scale(.95,.8); }
+  to { transform: rotate(31deg) scale(.12,.08); opacity: 0; }
+}
+/* The left loop initially hides the rest of the band. As the loop shrinks,
+   expose the length between the trimmed band end (638) and the knot (842). */
+@keyframes feed-band {
+  from { clip-path: polygon(0 0, 84% 0, 100% 0, 100% 100%, 84% 100%, 0 100%); }
+  to {
+    transform: scaleX(1.45);
+    clip-path: polygon(0 0, 84% 4%, 100% 32%, 100% 55%, 84% 92%, 0 100%);
+  }
+}
+@keyframes withdraw { to { transform: translateX(-125%); } }
+/* Keep the rotation continuous: easing each stop of a multi-stop rotation
+   made the cover repeatedly slow down as it crossed the hinge. */
+.opening .board {
+  animation: swing-cover 1.3s .94s cubic-bezier(.45,0,.55,1) both;
+}
+@keyframes swing-cover {
+  from { rotate: y 0deg; }
+  to { rotate: y -180deg; }
+}
+/* As the cover opens, make room for the whole spread. The same frame is
+   retained during the camera move and reversed when the book closes. */
+.opening .book { transform-origin: center top; animation: frame-spread 1.3s .94s cubic-bezier(.45,0,.55,1) both; }
+.approaching .book, .retreating .book {
+  transform-origin: center top;
+  transform: translate(
+    calc(var(--book-width) * .32 * var(--spread-scale, 1)),
+    calc(var(--book-width) * 1.333333 * (1 - var(--spread-scale, 1)) / 2)
+  ) scale(var(--spread-scale, 1));
+}
+.closing .book { transform-origin: center top; animation: frame-spread 1.3s cubic-bezier(.45,0,.55,1) reverse both; }
+@keyframes frame-spread {
+  from { transform: translate(0, 0) scale(1); }
+  to {
+    transform: translate(
+      calc(var(--book-width) * .32 * var(--spread-scale, 1)),
+      calc(var(--book-width) * 1.333333 * (1 - var(--spread-scale, 1)) / 2)
+    ) scale(var(--spread-scale, 1));
+  }
+}
+.opening .front { animation: cut-at-hinge 1ms .93s both; }
+@keyframes cut-at-hinge { from { clip-path: inset(0); } to { clip-path: inset(0 0 0 13.35175%); } }
+.opening .base { animation: expose-base 1.54s linear both; }
+@keyframes expose-base {
+  0%,59% { visibility: hidden; }
+  60%,67% { visibility: visible; opacity: 1; }
+  100% { visibility: hidden; opacity: 0; }
+}
+.opening .spine { animation: blend-binding .24s 1.58s both; }
+.opening .book-hinge { animation: reveal-cover .24s 1.58s both; }
+.opening .ribbon-resting { animation: reveal-cover .35s .75s both; }
+@keyframes blend-binding { to { opacity: 0; } }
+.opening .open-book { animation: expose-page .09s 1.02s ease-out both; }
+@keyframes expose-page {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.opening .hinge-shadow { animation: soften-hinge .72s 1.2s both; }
+@keyframes soften-hinge {
+  0% { opacity: 0; }
+  23% { opacity: .8; }
+  100% { opacity: 0; }
+}
+.approaching .book-camera {
+  --approach-timing: 1100ms 100ms cubic-bezier(.45,0,.55,1) both;
+  animation: enter-book var(--approach-timing);
+}
+@keyframes enter-book {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: var(--camera-target, none); }
+}
+.approaching .book-glow,
+.approaching .book-opener span, .approaching .skip-opening { visibility: hidden; }
+.open .cover-rig, .retreating .book-glow,
+.retreating .book-opener span, .retreating .skip-opening,
+.closing .book-opener span, .closing .skip-opening { visibility: hidden; }
+.approaching .board, .retreating .board { rotate: y -180deg; }
+.approaching .front, .retreating .front { clip-path: inset(0 0 0 13.35175%); }
+.approaching .spine, .retreating .spine { opacity: 0; }
+.retreating .book-camera { animation: enter-book 1100ms cubic-bezier(.45,0,.55,1) reverse both; }
+.closing .spine { animation: reveal-cover .24s .42s ease-out both; }
+.closing .book-hinge { animation: blend-binding .24s .42s ease-out both; }
+.closing .ribbon-resting { animation: blend-binding .25s .75s ease-out both; }
+@keyframes reveal-cover { from { opacity: 0; } to { opacity: 1; } }
+.closing .board {
+  animation: swing-cover 1.3s cubic-bezier(.45,0,.55,1) reverse both;
+}
+.closing .front { animation: restore-cover 1.3s step-end both; }
+@keyframes restore-cover {
+  0% { clip-path: inset(0 0 0 13.35175%); }
+  100% { clip-path: inset(0); }
+}
+.closing .ribbon-window { animation: return-ribbon 1.3s ease-in both; }
+@keyframes return-ribbon { 0%, 75% { opacity: 0; } 100% { opacity: 1; } }
+.closing .book-glow { animation: return-glow 1.3s ease-in both; }
+@keyframes return-glow { 0%, 65% { opacity: 0; } 100% { opacity: var(--cover-glow-opacity, .72); } }
+.opening .book-glow { animation: blend-binding .7s .7s both; }
+.opening .book-opener span, .opening .skip-opening { animation: blend-binding .28s .12s both; }
+@media (prefers-reduced-motion: no-preference) {
+  .closed .ribbon-right-tail { animation: tied-ribbon-breeze 4.2s ease-in-out infinite; }
+  .closed .ribbon-left-tail { animation: tied-ribbon-breeze 5.3s -1.2s ease-in-out infinite reverse; }
+  .cover-rig, .book-glow {
+    translate: 0 var(--cover-lift, 0px);
+    transition: translate .18s ease-out;
+  }
+  .book-glow { transition: translate .18s ease-out, opacity .18s ease-out; }
+  .satin {
+    filter: brightness(var(--ribbon-brightness, 1));
+    transition: filter .18s ease-out;
+  }
+  .closed .book:has(.book-opener:focus-visible) {
+    --cover-lift: -3px;
+    --ribbon-brightness: 1.16;
+    --cover-glow-opacity: 1;
+  }
+  @media (hover: hover) {
+    .closed .book:has(.book-opener:hover) {
+      --cover-lift: -3px;
+      --ribbon-brightness: 1.16;
+      --cover-glow-opacity: 1;
+    }
+  }
+}
+@keyframes tied-ribbon-breeze {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  35% { transform: rotate(2.8deg) skewX(1.5deg); }
+  70% { transform: rotate(-2.2deg) skewX(-1.1deg); }
+}

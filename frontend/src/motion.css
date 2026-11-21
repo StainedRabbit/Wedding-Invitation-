@@ -122,9 +122,11 @@
 .closing .book-glow { animation: return-glow 1.3s ease-in both; }
 @keyframes return-glow { 0%, 65% { opacity: 0; } 100% { opacity: var(--cover-glow-opacity, .72); } }
 .opening .book-glow { animation: blend-binding .7s .7s both; }
+.closed .ribbon-right-tail { animation: tied-ribbon-breeze 4.2s ease-in-out infinite; }
+.closed .ribbon-left-tail { animation: tied-ribbon-breeze 5.3s -1.2s ease-in-out infinite reverse; }
+.closed .ribbon-right-loop { animation: bow-breeze 4.2s ease-in-out infinite; }
+.closed .ribbon-left-loop { animation: bow-breeze 5.3s -1.2s ease-in-out infinite reverse; }
 @media (prefers-reduced-motion: no-preference) {
-  .closed .ribbon-right-tail { animation: tied-ribbon-breeze 4.2s ease-in-out infinite; }
-  .closed .ribbon-left-tail { animation: tied-ribbon-breeze 5.3s -1.2s ease-in-out infinite reverse; }
   .cover-rig, .book-glow {
     translate: 0 var(--cover-lift, 0px);
     transition: translate .18s ease-out;
@@ -149,6 +151,12 @@
 }
 @keyframes tied-ribbon-breeze {
   0%, 100% { transform: rotate(0deg) skewX(0deg); }
-  35% { transform: rotate(2.8deg) skewX(1.5deg); }
-  70% { transform: rotate(-2.2deg) skewX(-1.1deg); }
+  35% { transform: rotate(4deg) skewX(1.5deg); }
+  70% { transform: rotate(-3deg) skewX(-1.1deg); }
+}
+
+@keyframes bow-breeze {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  35% { transform: rotate(1deg) scale(1.01, .99); }
+  70% { transform: rotate(-.7deg) scale(.99, 1.01); }
 }

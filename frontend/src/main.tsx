@@ -15,6 +15,10 @@ function App() {
   const [load, setLoad] = useState<LoadState>('pending')
   const [reduceMotion, setReduceMotion] = useState(motionPreference.matches)
   const [motionOptIn, setMotionOptIn] = useState(false)
+  const [musicEnabled, setMusicEnabled] = useState(true)
+  const [musicPlaying, setMusicPlaying] = useState(false)
+  const [musicUnavailable, setMusicUnavailable] = useState(false)
+  const music = useRef<HTMLAudioElement>(null)
   const pageWell = useRef<HTMLDivElement>(null)
   const camera = useRef<HTMLDivElement>(null)
   const opener = useRef<HTMLButtonElement>(null)
@@ -124,6 +128,7 @@ function App() {
 
   function enter(playAnimation: boolean) {
     if (phase !== 'closed') return
+    if (musicEnabled) void music.current?.play().catch(() => setMusicPlaying(false))
     setMotionOptIn(playAnimation && reduceMotion)
     if (!playAnimation || load === 'failed') {
       setPhase('open')
@@ -134,6 +139,7 @@ function App() {
   function closeBook() {
     if (phase !== 'open') return
     restoreFocus.current = true
+    music.current?.pause()
     if (reduceSessionMotion || load === 'failed') finishClosing()
     else setPhase('retreating')
   }
@@ -142,7 +148,26 @@ function App() {
     setPhase('closed')
   }
 
+  function toggleMusic() {
+    const track = music.current
+    if (!track) return
+    if (musicPlaying) {
+      track.pause()
+      setMusicEnabled(false)
+    } else {
+      setMusicEnabled(true)
+      void track.play().catch(() => setMusicPlaying(false))
+    }
+  }
+
   return <main className={'stage ' + phase}>
+    <audio ref={music} src="/music/ordinary-song.mp3" loop preload="none"
+      onPlay={() => setMusicPlaying(true)} onPause={() => setMusicPlaying(false)}
+      onError={() => { setMusicPlaying(false); setMusicUnavailable(true) }} />
+    {phase !== 'closed' && <button className="music-control" type="button" onClick={toggleMusic}
+      disabled={musicUnavailable} aria-label={musicUnavailable ? 'Music unavailable' : musicPlaying ? 'Mute music' : 'Play music'}>
+      {musicUnavailable ? 'Music unavailable' : musicPlaying ? 'Mute music' : 'Play music'}
+    </button>}
     <div className="night-frame" aria-hidden="true" />
     <div className="book-camera" ref={camera} onAnimationEnd={event => {
       if (phase === 'opening' && event.animationName === 'swing-cover') {

@@ -149,3 +149,12 @@ h2[tabindex="-1"]:focus { outline: none; }
 .cover-rig[data-ready="false"] .reverse { visibility: hidden; }
 .ribbon-window, .satin { position: absolute; inset: 0; pointer-events: none; }
 .ribbon-window { clip-path: inset(-25% -50% -25% 2.7%); }
+
+.music-control {
+  position: fixed; z-index: 10; top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right)); min-height: 44px; padding: .5rem .9rem;
+  border: 1px solid var(--gold); border-radius: 999px;
+  background: #173456; color: var(--ivory); font: .9rem 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 2px 8px #09132740;
+}
+.music-control:disabled { opacity: .75; cursor: default; }

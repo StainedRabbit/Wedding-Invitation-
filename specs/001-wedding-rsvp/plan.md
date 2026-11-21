@@ -14,7 +14,7 @@ Replace the RSVP preview with an invitation-aware React form and a Django servic
 
 **Primary Dependencies**: Existing Django 5.2.16, React 19 and Vite 8. Add Pillow, pillow-heif and an FFprobe executable for media validation.
 
-**Storage**: SQLite with short `IMMEDIATE` transactions. Store uploads on persistent private disk and spool incoming data to a provisioned temporary directory.
+**Storage**: PostgreSQL for this project's local database, with short transactions and row locks for personalized invitation submission. SQLite remains available as a development fallback. Store uploads on persistent private disk and spool incoming data to a provisioned temporary directory.
 
 **Testing**: Django test runner, frontend type check and production build, desktop and phone browser acceptance, and a host-level upload smoke test.
 

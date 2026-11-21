@@ -1,6 +1,7 @@
 """Local development settings for the invitation."""
 
 import os
+import json
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,13 +44,34 @@ TEMPLATES = [
         },
     },
 ]
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-        "OPTIONS": {"transaction_mode": "IMMEDIATE", "timeout": 20},
+credentials_path = BASE_DIR / ".postgres-credentials.json"
+database_mode = os.environ.get(
+    "RSVP_DATABASE", "postgres" if (BASE_DIR / ".use-postgres").is_file() else "sqlite"
+)
+if database_mode == "postgres":
+    if credentials_path.is_file():
+        with credentials_path.open(encoding="utf-8") as credentials_file:
+            postgres_credentials = json.load(credentials_file)
+    else:
+        postgres_credentials = {}
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("PGDATABASE", postgres_credentials.get("name", "our_next_chapter")),
+            "USER": os.environ.get("PGUSER", postgres_credentials.get("user", "our_next_chapter")),
+            "PASSWORD": os.environ.get("PGPASSWORD", postgres_credentials.get("password", "")),
+            "HOST": os.environ.get("PGHOST", postgres_credentials.get("host", "127.0.0.1")),
+            "PORT": os.environ.get("PGPORT", postgres_credentials.get("port", "5432")),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+            "OPTIONS": {"transaction_mode": "IMMEDIATE", "timeout": 20},
+        }
+    }
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},

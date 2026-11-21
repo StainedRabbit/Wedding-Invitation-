@@ -1,0 +1,16 @@
+.github-upload-staging/
+.venv/
+.spec-kit-bin/
+.spec-kit-cache/
+.spec-kit-tools/
+.railway-migration/
+tools/
+backend/.postgres-credentials.json
+backend/.use-postgres
+backend/.sqlite-export.json
+backend/db.sqlite3*
+backend/private_uploads/
+frontend/node_modules/
+frontend/dist/
+Assets/
+review/

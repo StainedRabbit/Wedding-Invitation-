@@ -1,6 +1,6 @@
 ﻿# Our Next Chapter
 
-A mobile-first wedding invitation for Angelyn B. Sayno and Kevin-Ezer F. Tanierla. The React frontend runs on its own. RSVP entries exist only in component memory and are discarded when the book closes.
+A mobile-first wedding invitation for Angelyn B. Sayno and Kevin-Ezer F. Tanierla. RSVP responses are stored by Django. Photo and video uploads are stored separately in a private local directory.
 
 ## Run the invitation
 
@@ -18,32 +18,41 @@ To check types and create the standalone frontend bundle, run `npm.cmd run build
 
 ## Run Django separately
 
-From the workspace root in another PowerShell terminal, with Python 3.13 and `mkvirtualenv` installed, create the environment once:
+Use the `wedding` virtual environment as the main Python environment. From the workspace root in another PowerShell terminal, activate it and install the project dependencies:
 
 ```powershell
-$env:WORKON_HOME = (Get-Location).Path
-mkvirtualenv -r "$PWD\backend\requirements.txt" .venv
+& "$env:USERPROFILE\Envs\wedding\Scripts\Activate.ps1"
+python -m pip install -r backend\requirements.txt
 ```
 
-In PowerShell, activate the environment and run Django from the backend directory:
+Then run Django from the backend directory:
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
 cd backend
-py manage.py migrate
-py manage.py runserver
+python manage.py migrate
+python manage.py runserver
 ```
 
-Repeat the activation and `cd backend` in each new terminal. Run `deactivate` when finished.
+In each new terminal, activate `wedding` and change to the `backend` directory. Run `deactivate` when finished.
 
-The root URL returns a plain-text development status. To create the administrator account, stop the server and run `py manage.py createsuperuser` from `backend`. Start the server again and open http://localhost:8000/admin/. The SQLite database is stored locally in `backend/db.sqlite3`. RSVP management is planned and has not yet been implemented.
+The root URL returns a plain-text development status. To create an administrator account, stop the server and run `py manage.py createsuperuser` from `backend`. Start the server again and open http://localhost:8000/admin/.
+
+This computer uses the PostgreSQL database `our_next_chapter` on localhost. Its dedicated login is configured in `backend/.postgres-credentials.json`, and `backend/.use-postgres` selects it. Both files are ignored by Git; keep the credentials file private and back it up securely. PostgreSQL must be running when Django starts.
+
+On another computer, set `RSVP_DATABASE=postgres` and configure `PGDATABASE`, `PGUSER`, `PGPASSWORD`, `PGHOST`, and `PGPORT`, or supply a PostgreSQL password file. Without the local marker or PostgreSQL setting, the project uses SQLite. The previous local SQLite file remains at `backend/db.sqlite3` as a backup of the data before the switch; changes made after the switch are stored in PostgreSQL.
+
+## Railway deployment
+
+The root Dockerfile builds the frontend and serves it with Django. The Railway web service requires a PostgreSQL service with `PGDATABASE`, `PGUSER`, `PGPASSWORD`, `PGHOST`, and `PGPORT` supplied as service variables, a unique `DJANGO_SECRET_KEY`, and a Railway public domain. Attach a persistent volume to the web service before starting it; guest uploads are stored under that volume. The container runs Django migrations on startup and listens on Railway's `PORT`. Configure backups for both PostgreSQL and the upload volume.
+
+The Railway package excludes local database files, credentials, and uploads. It does not copy existing local records automatically. Transfer and verify any records and uploaded files separately before using a production service.
 
 ## Implementation
 
 - `frontend/src/Book.tsx` assembles the cover and decodes mounted images before replacing the initial composite.
 - `frontend/src/portrait.json` records the production layers’ trimmed geometry from `Assets/asset-manifest.csv`. `art.tsx` registers them on one portrait canvas.
 - `frontend/src/motion.css` controls the ribbon release and cover turn. `reader.css` lays out the pages and animates the invitation unfolding and zooming into view.
-- `frontend/src/main.tsx` manages the cover and opening fallback. `Reader.tsx` contains the four chapters, sample content, and navigation. `Rsvp.tsx` contains the inline preview form.
+- `frontend/src/main.tsx` manages the cover and opening fallback. `Reader.tsx` contains the invitation chapters, sample content, and navigation. `Rsvp.tsx` contains the inline preview form.
 - `frontend/public/art` contains the optimized artwork used by the app. The original pack and its review material are in `Assets`.
 - `review` contains phone-size screenshots from the running frontend.
 

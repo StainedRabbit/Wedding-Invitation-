@@ -87,7 +87,7 @@ def submit(request):
             staged.append(stage_file(upload))
         with transaction.atomic():
             if invitation:
-                invitation = Invitation.objects.filter(pk=invitation.pk, token=request.headers.get("X-Invitation-Token"), is_active=True).first()
+                invitation = Invitation.objects.select_for_update().filter(pk=invitation.pk, token=request.headers.get("X-Invitation-Token"), is_active=True).first()
                 if not invitation:
                     return JsonResponse({"code": "invite_unavailable"}, status=404)
                 if plus and not invitation.allows_plus_one:

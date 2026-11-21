@@ -5,8 +5,15 @@ __pycache__/
 *.pyc
 backend/db.sqlite3
 backend/db.sqlite3-journal
+backend/db.sqlite3-wal
+backend/db.sqlite3-shm
+backend/.postgres-credentials.json
+backend/.use-postgres
+backend/.sqlite-export.json
 backend/private_uploads/
+backend/staticfiles/
 tools/ffmpeg/
 .spec-kit-bin/
 .spec-kit-cache/
 .spec-kit-tools/
+.railway-migration/

@@ -1,0 +1,15 @@
+*
+!backend/
+!backend/**
+!frontend/
+!frontend/**
+backend/.postgres-credentials.json
+backend/.use-postgres
+backend/.sqlite-export.json
+backend/db.sqlite3*
+backend/private_uploads/
+backend/staticfiles/
+backend/__pycache__/
+**/__pycache__/
+frontend/node_modules/
+frontend/dist/

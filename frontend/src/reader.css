@@ -94,6 +94,16 @@ body:has(.stage:is(.opening, .approaching, .open, .retreating, .closing)) { over
   overflow-wrap: anywhere;
 }
 .leaf[data-chapter="invitation"] .leaf-content { justify-content: space-evenly; }
+.page-emblem {
+  display: block;
+  width: clamp(5rem, 13vw, 7.5rem);
+  height: clamp(3.25rem, 8.5vw, 5rem);
+  object-fit: contain;
+  margin: 0 auto .7rem;
+  flex: none;
+  pointer-events: none;
+}
+.leaf[data-theme="sun"] .page-emblem { width: clamp(6rem, 15vw, 9rem); }
 .leaf h2 {
   margin: 0;
   font-size: clamp(2rem, 7vw, 4rem);
@@ -101,6 +111,16 @@ body:has(.stage:is(.opening, .approaching, .open, .retreating, .closing)) { over
   font-weight: 400;
   line-height: 1.04;
 }
+.leaf h2::after {
+  content: '';
+  display: block;
+  width: clamp(4rem, 14vw, 7rem);
+  height: 1px;
+  margin: .45em auto 0;
+  background: #ae894b99;
+}
+.leaf[data-theme="moon"] h2 { color: #243d5f; }
+.leaf[data-theme="sun"] h2 { color: #745121; }
 .leaf-content > p {
   margin: .8rem auto 0;
   max-width: 39ch;
@@ -267,6 +287,7 @@ body:has(.stage:is(.opening, .approaching, .open, .retreating, .closing)) { over
 
 @media (max-height: 520px) {
   .leaf-content { padding-block: 1.25rem 1rem; }
+  .page-emblem { height: 2.75rem; margin-bottom: .4rem; }
 }
 @media (max-width: 600px) {
   .reader[inert] { --preview-content-scale: 1.12; }

@@ -6,6 +6,9 @@ import { Rsvp } from './Rsvp'
 
 const chapters = ['invitation', 'story', 'details', 'family', 'guests', 'rsvp'] as const
 type Chapter = typeof chapters[number]
+const chapterThemes: Record<Chapter, 'moon' | 'sun'> = {
+  invitation: 'moon', story: 'moon', details: 'sun', family: 'moon', guests: 'sun', rsvp: 'moon',
+}
 type Direction = -1 | 1
 type Turn = { to: Chapter; direction: Direction; scrollTop: number }
 
@@ -179,11 +182,12 @@ export function Reader({ reducedMotion, entering, onClose }: {
         const rendered = active || chapter === turn?.to
         const turnSource = turn && (turn.direction === 1 ? active : chapter === turn.to)
         return <section key={chapter} className="leaf" data-active={active} data-chapter={chapter}
-          data-turn-source={turnSource || undefined}
+          data-turn-source={turnSource || undefined} data-theme={chapterThemes[chapter]}
           aria-labelledby={chapter + '-title'} hidden={!rendered} inert={Boolean(turn) || !active}>
           <div className="leaf-scroll" ref={active ? activePage : undefined}>
             <div className="leaf-paper">
               <div className="leaf-content">
+                <img className="page-emblem" src={chapterThemes[chapter] === 'moon' ? '/art/page-moon-emblem.webp' : '/art/sun-refined.webp'} alt="" aria-hidden="true" />
                 {chapter === 'invitation' && <Invitation onJump={goTo} />}
                 {chapter === 'story' && <Story />}
                 {chapter === 'details' && <WeddingDetails onJump={goTo} />}

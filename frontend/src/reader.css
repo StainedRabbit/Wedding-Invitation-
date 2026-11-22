@@ -67,7 +67,34 @@ body:has(.stage:is(.opening, .approaching, .open, .retreating, .closing)) { over
   inset: clamp(6px, 1.3vw, 16px);
   border: 1px solid #94692f5c;
   pointer-events: none;
+  background:
+    url('/art/milestone-star.svg') left .7rem top .7rem / .65rem .65rem no-repeat,
+    url('/art/milestone-star.svg') left 1.7rem top 1.65rem / .32rem .32rem no-repeat,
+    url('/art/milestone-star.svg') right .7rem bottom .7rem / .65rem .65rem no-repeat,
+    url('/art/milestone-star.svg') right 1.7rem bottom 1.65rem / .32rem .32rem no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) left .3rem top .3rem / 2.25rem 1px no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) left .3rem top .3rem / 1px 2.25rem no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) right .3rem bottom .3rem / 2.25rem 1px no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) right .3rem bottom .3rem / 1px 2.25rem no-repeat;
+  opacity: .7;
 }
+/* Small details sit outside the reading area and move with the paper on turns. */
+.leaf-paper::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 2.5vh, 1.5rem);
+  width: 4.5rem;
+  height: .8rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: .7;
+  background:
+    url('/art/milestone-star.svg') center / .7rem .7rem no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) left center / 1.45rem 1px no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) right center / 1.45rem 1px no-repeat;
+}
+.leaf[data-theme="moon"] .leaf-paper::after { opacity: .55; }
 .leaf[inert] { pointer-events: none; }
 .leaf-scroll {
   position: absolute;
@@ -115,9 +142,12 @@ body:has(.stage:is(.opening, .approaching, .open, .retreating, .closing)) { over
   content: '';
   display: block;
   width: clamp(4rem, 14vw, 7rem);
-  height: 1px;
-  margin: .45em auto 0;
-  background: #ae894b99;
+  height: .65rem;
+  margin: .32em auto 0;
+  background:
+    url('/art/milestone-star.svg') center / .6rem .6rem no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) left center / 42% 1px no-repeat,
+    linear-gradient(#ae894b99, #ae894b99) right center / 42% 1px no-repeat;
 }
 .leaf[data-theme="moon"] h2 { color: #243d5f; }
 .leaf[data-theme="sun"] h2 { color: #745121; }
